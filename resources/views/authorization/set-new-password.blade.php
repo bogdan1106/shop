@@ -10,11 +10,11 @@
     <!--bottom-header-->
 
     @if (session()->has('success'))
-        <div class="alert alert-success">
-            <ul>
-                <li>{!! session()->get('success') !!}</li>
-            </ul>
+        <div class="alert alert-success alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>{{ session()->get('success') }}</strong>
         </div>
+
     @endif
 
 
