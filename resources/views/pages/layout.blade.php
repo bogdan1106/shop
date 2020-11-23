@@ -36,45 +36,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 <body>
 
-
-{{--<!--top-header-->--}}
-{{--<div class="top-header">--}}
-    {{--<div class="container">--}}
-        {{--<div class="top-header-main">--}}
-            {{--<div class="col-md-6 top-header-left">--}}
-                {{--@if (session()->has('success'))--}}
-                    {{--<p class="alert-danger">{{session()->get('success')}}</p>--}}
-                {{--@endif--}}
-
-            {{--</div>--}}
-            {{--<div class="col-md-6 top-header-left">--}}
-                {{--<div class="cart box_1">--}}
-                    {{--<a href="checkout.html">--}}
-                        {{--<div class="total">--}}
-                            {{--<span class="simpleCart_total"></span></div>--}}
-                        {{--<img src="images/cart-1.png" alt="" />--}}
-                    {{--</a>--}}
-                    {{--<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>--}}
-                    {{--<div class="clearfix"> </div>--}}
-                {{--</div>--}}
-                {{--<div class="user_in_header col-sm-5">--}}
-
-                    {{--@if (auth()->user())--}}
-                        {{--<h3> Hello {{auth()->user()->name}}--}}
-                            {{--<a href="{{route('logout')}}">Log out</a>--}}
-                        {{--</h3>--}}
-                    {{--@else <h3><a href="{{route('login')}}">Login</a> <a href="{{route('register')}}">Register</a></h3>--}}
-                    {{--@endif--}}
-                {{--</div>--}}
-            {{--</div>--}}
-            {{--<div class="clearfix"></div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
-{{--</div>--}}
-
-
-
-
 <div class="header-area">
     <div class="container">
         <div class="row">
@@ -125,61 +86,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="container">
         <div class="header">
             <div class="col-md-9 header-left">
-                <div class="top-nav">
-                    <ul class="memenu skyblue"><li class=""><a href="{{route('index')}}">Home</a></li>
-                        <li class="grid"><a href="#">Men</a>
-                            <div class="mepanel">
-                                <div class="row">
-                                    <div class="col1 me-one">
-                                        <h4>Shop</h4>
-                                        <ul>
-                                            <li><a href="products.html">New Arrivals</a></li>
-                                            <li><a href="products.html">Blazers</a></li>
-                                            <li><a href="products.html">Swem Wear</a></li>
-                                            <li><a href="products.html">Accessories</a></li>
-                                            <li><a href="products.html">Handbags</a></li>
-                                            <li><a href="products.html">T-Shirts</a></li>
-                                            <li><a href="products.html">Watches</a></li>
-                                            <li><a href="products.html">My Shopping Bag</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col1 me-one">
-                                        <h4>Style Zone</h4>
-                                        <ul>
-                                            <li><a href="products.html">Shoes</a></li>
-                                            <li><a href="products.html">Watches</a></li>
-                                            <li><a href="products.html">Brands</a></li>
-                                            <li><a href="products.html">Coats</a></li>
-                                            <li><a href="products.html">Accessories</a></li>
-                                            <li><a href="products.html">Trousers</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col1 me-one">
-                                        <h4>Popular Brands</h4>
-                                        <ul>
-                                            <li><a href="products.html">499 Store</a></li>
-                                            <li><a href="products.html">Fastrack</a></li>
-                                            <li><a href="products.html">Casio</a></li>
-                                            <li><a href="products.html">Fossil</a></li>
-                                            <li><a href="products.html">Maxima</a></li>
-                                            <li><a href="products.html">Timex</a></li>
-                                            <li><a href="products.html">TomTom</a></li>
-                                            <li><a href="products.html">Titan</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="grid"><a href="typo.html">Blog</a>
-                        </li>
-
-
-
-                        <li class="grid"><a href="{{route('categories')}}">Categories</a></li>
-                        <li class="grid"><a href="contact.html">Contact</a>
-                        </li>
-                    </ul>
-                </div>
                 <div class="clearfix"> </div>
             </div>
             <div class="col-md-3 header-right">
