@@ -182,3 +182,48 @@
     text-decoration: none;
     
 }
+
+
+
+/*pagination*/
+
+
+.links-container {
+    margin: 10px 0;
+    text-align:center;
+}
+
+
+/*wishlist button*/
+
+svg{
+    display: block;
+    width: 50px;
+    height: auto;
+}
+
+#svg_2{
+    fill:transparent;
+    stroke:#f00;
+    stroke-width:6px;
+    cursor:pointer;
+    transition:fill .3s;
+}
+#svg_2.filled{
+    fill:#f00;
+}
+
+.like-hurt {
+    margin: 0 0 0 50px;
+}
+
+
+.heart-position {
+    margin: 0 10px ;
+    float: left;
+}
+
+
+#form-panel {
+    display: none;
+}

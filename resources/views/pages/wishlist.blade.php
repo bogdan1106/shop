@@ -1,36 +1,37 @@
 
+
 @extends('pages.layout')
 @section('title', 'Main page')
 
 
 @section('content')
 
+      <div class="container">
 
-    <!--start-breadcrumbs-->
-    <div class="breadcrumbs">
-        <div class="container">
-            <div class="breadcrumbs-main">
-                <ol class="breadcrumb">
-                    <li><a href="index.html">Home</a></li>
-                    <li class="active">Category Name</li>
-                </ol>
-            </div>
+        <div class="col-md-12">
+            <h2> {{$products->count() == 0 ? 'Список желаний пуст': 'Список желаний' }}</h2>
         </div>
     </div>
+
+
 
     <!--product-starts-->
     <div class="product">
         <div class="container">
             <div class="product-top">
                 <div class="product-one">
+                    @if($products->count() > 0)
                     @foreach($products as $product)
-                        <div class="col-md-3 product-left">
+                        <div class="col-md-3 product-left" id="product-{{$product->id}}">
+
                             <div class="product-main simpleCart_shelfItem">
-                                <a href="{{route('product', $product->id)}}" class="mask"><img class="img-responsive zoom-img" src="{{$product->getImgPath()}}" alt="" /></a>
+                                <a href="{{route('product', $product->id)}}" class="mask"><img class="img-responsive zoom-img" src="{{$product->getImgPath()}}" alt="" width="300px" /></a>
                                 <div class="product-bottom">
-                                    <h3>{{$product->name}}</h3>
-                                    <h4>{{$product->category->title}}</h4>
-                                    <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">${{$product->price}}</span></h4>
+                                    <a href="{{route('product', $product->id)}}" class="product-link">{{$product->name}}</a>
+                                    <h4>{{$product->getCategory()->title}}</h4>
+                                    <h4><a class="item_add" href="{{route('product', $product->id)}}"><i></i></a> <span class=" item_price">${{$product->price}}</span></h4>
+                                    <button class="btn btn-primary" data-id="{{$product->id}}">В корзину</button>
+                                    <button class="btn btn-danger delete-button"   data-id="{{$product->id}}">Удалить</button>
                                 </div>
                                 <div class="srch">
                                     <span>-50%</span>
@@ -38,16 +39,14 @@
                             </div>
                         </div>
                     @endforeach
-
+                    @endif
                     <div class="clearfix"></div>
+                </div>
 
-                        <div class="links-container">
-                            {{$products->links('vendor.pagination.bootstrap-4')}}
-                        </div>
 
+            </div>
         </div>
     </div>
-
     <!--product-end-->
     <!--information-starts-->
     <div class="information">

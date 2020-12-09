@@ -24,13 +24,15 @@
    @foreach ($categories as $category)
 
    <div class="col-md-4 about-left">
+    <a href="{{route('category', $category->id)}}">
     <figure class="effect-bubba">
-     <a href="{{route('category', $category->id)}}"><img class="img-responsive" src="images/categories/{{$category->image}}" alt=""/></a>
+     <img class="img-responsive" src="images/categories/{{$category->image}}" alt=""/>
      <figcaption>
       <h2 >{{$category->title}}</h2>
       <p>{{$category->description}}</p>
      </figcaption>
     </figure>
+    </a>
     <p class="text-center category-title"><a href="{{route('category', $category->id)}}">{{$category->title}}</a></p>
    </div>
     @endforeach

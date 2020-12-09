@@ -14,6 +14,7 @@
     {{--<script src="/js/jquery-1.11.0.min.js"></script>--}}
     {{--<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>--}}
     <script src="/js/like.js"></script>
+    <script src="/js/update.js"></script>
     <!--Custom-Theme-files-->
     <!--theme-style-->
     <link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
@@ -44,7 +45,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <ul>
                         <li><a href="#"><i class="fa fa-phone"></i> +955 123 4567</a></li>
                         <li><a href="#myModal" class="trigger-btn" data-toggle="modal"><i class="fa fa-envelope"></i> contact@example.com</a></li>
-                        <a href="#" >Click to Open Login Modal</a>
                     </ul>
                 </div>
             </div>
@@ -57,12 +57,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                                 <li><a href="{{route('profile')}}"><i class="fa fa-user"></i> My Account</a></li>
                                 <li><a href="{{route('logout')}}"><i class="fa fa-user"></i> logout</a></li>
-                                <li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li>
                             @else
                             <li><a href="{{route('register')}}"><i class="fa fa-user"></i> register</a></li>
                             <li><a href="{{route('login')}}"><i class="fa fa-user"></i> login</a></li>
                             @endif
                             <li><a href="cart.html"><i class="fa fa-cart-arrow-down"></i> My Cart</a></li>
+                                <li><a id="wishlist-header-link" href="{{route('wishlist')}}"><i class="fa fa-heart"></i>
+                                        Wishlist {{$countUserLikes ? '(' . $countUserLikes. ')' : ''}}</a></li>
+
                         </ul>
                     </div>
                 </div>
@@ -78,7 +80,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--top-header-->
 <!--start-logo-->
 <div class="logo">
-    <a href="index.html"><h1>Luxury Watches</h1></a>
+    <a href="{{route('index')}}"><h1>Original Watches</h1></a>
 </div>
 <!--start-logo-->
 <!--bottom-header-->

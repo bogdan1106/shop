@@ -15,6 +15,9 @@
 <div class="container">
 
     <div class="col-md-12">
+        <div class="">
+            <h4><a class="link-watch-info" href="#">Краткая история часов (Показать / Скрыть)</a></h4>
+        </div>
         <div class="text-content">
 
             <p>В наши дни наручные часы рассматриваются больше как символ статуса, нежели устройство для определения времени. Сейчас практически любые электронные устройства имеют на дисплее отображение времени. Механические наручные часы в цифровую эпоху постепенно превращаются из функционального предмета в объект современной культуры.
@@ -42,11 +45,13 @@
                             <div class="product-bottom">
                                 <a href="{{route('product', $product->id)}}" class="product-link">{{$product->name}}</a>
                                 <h4>{{$product->getCategory()->title}}</h4>
-                                <h4><a class="item_add" href="{{route('product', $product->id)}}"><i></i></a> <span class=" item_price">${{$product->price}}</span></h4>
+                                <h4><a class="item_add" href="{{route('product', $product->id)}}"><i></i></a> <span class=" item_price">${{$product->getPrice()}}</span></h4>
                             </div>
+                            @if ($product->discount)
                             <div class="srch">
-                                <span>-50%</span>
+                                <span>-{{$product->discount}}%</span>
                             </div>
+                                @endif
                         </div>
                     </div>
                     @endforeach

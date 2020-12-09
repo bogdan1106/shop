@@ -18,7 +18,7 @@ trait UploadImage
         $this->deleteOldImg();
         $imageName = time().'.'.$image->getClientOriginalExtension();
         request()->image->move(public_path(self::IMAGE_PATH), $imageName);
-        $this->image = $imageName;
+       return $this->image = $imageName;
     }
 
 

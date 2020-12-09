@@ -17,9 +17,17 @@
                         </div>
                         <div class="panel-body">
                             <div class="text-center" id="author">
-                                <img src="{{$user->image ? $user->getImgPath(): '/images/users/no-img.png'}}" width="200" height="200">
+                                <img id="avatar" src="{{$user->image ? $user->getImgPath(): '/images/users/no-img.png'}}" width="200" height="200">
                                 <h3>{{$user->name}}</h3>
-                                <a href="#" class="add-cart item_add" onclick="document.getElementById('form_id').submit();">Обновить фото</a>
+                                <a href="#" class="add-cart item_add" 
+                                   onclick="document.getElementById('form_id').submit();">Обновить фото</a>
+                                <br>
+                                <br>
+
+
+
+                                <input id="sortpicture" type="file" name="sortpic" />
+                                <button id="upload">Upload</button>
 
                             </div>
                         </div>
@@ -27,43 +35,96 @@
                 </div>
                 <div class="col-lg-8 col-md-8 col-xs-12">
                     <div class="panel">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
+
                         <div class="panel-body">
                             <div id="myTabContent" class="tab-content">
+                                <h4>Профиль</h4>
                                 <hr>
                                 <div class="tab-pane fade active in" id="detail">
-                                    <h4>История профиля</h4>
+
                                     <table class="table table-th-block">
                                         <tbody>
-                                        <tr><td class="active">Зарегистрирован:</td><td>12-06-2016</td></tr>
-                                        <tr><td class="active">Последняя активность:</td><td>12-06-2016 / 09:11</td></tr>
-                                        <tr><td class="active">Страна:</td><td>Россия</td></tr>
-                                        <tr><td class="active">Город:</td><td>Волгоград</td></tr>
-                                        <tr><td class="active">Пол:</td><td>Мужской</td></tr>
-                                        <tr><td class="active">Полных лет:</td><td>43</td></tr>
-                                        <tr><td class="active">Семейное положение:</td><td>Женат</td></tr>
-                                        <tr><td class="active">Рейтинг пользователя:</td><td><i class="fa fa-star" style="color:red"></i> <i class="fa fa-star" style="color:red"></i> <i class="fa fa-star" style="color:red"></i> <i class="fa fa-star" style="color:red"></i> 4/5</td></tr>
-                                        <tr><td class="active">Плагин рейтинга:</td><td><a href="https://bootstraptema.ru/stuff/plugins_bootstrap/improvement/bootstrap_star_rating/12-1-0-73" target="_blank">http://goo.gl/bGGXuw</a></td></tr>
+                                        <tr><td class="active">Имя:</td><td>{{$user->name}}</td></tr>
+                                        <tr><td class="active">email:</td><td>{{$user->email}}</td></tr>
+                                        <tr><td class="active">Зарегистрирован:</td><td id="change-info">{{$user->getDateRegistration()}}</td></tr>
+                                        <tr><td class="active">Город:</td><td>{{$user->city ? $user->city : '-'}}</td></tr>
+                                        <tr><td class="active">Улица:</td><td>{{$user->address ? $user->address : '-'}}</td></tr>
+                                        <tr><td class="active">Отделение почты:</td><td>{{$user->post_office_number ? $user->post_office_number : '-'}}</td></tr>
+                                        <tr><td class="active">Телефон:</td><td>{{$user->phone_number ? '0'.$user->phone_number : '-'}}</td></tr>
+
                                         </tbody>
                                     </table>
                                 </div>
-
-                                <div class="col-md-12" id="">
-                                    <h4>Восстановление пароля</h4>
-                                    <p>Забыли пароль?
-                                    </p> <form action="{{route('forgot-password')}}" method="post">
-                                        @csrf
-                                        <label for="email" >Ваш Email:</label>
-                                        <input type="text" size="3" name="email" class="form-control">
-                                    </form>
-                                </div>
-
-
+                                <button id="edit-button" class="btn btn-primary">Редактировать</button>
                                 <div class="tab-pane fade" id="contact">
                                     <p></p>
                                 </div>
                             </div>
                         </div>
+
                     </div>
+
+
+
+
+                    <div class="panel" id="form-panel">
+                        <div class="panel-body">
+                            <div  class="tab-content">
+                                <h4>Редактировать</h4>
+                                <hr>
+                                <div class="tab-pane fade active in" >
+                                    <form action="{{route('users-update')}}" method="post">
+                                        @csrf
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Имя:</label>
+                                            <input type="text" class="form-control" name="name"  value="{{$user->name}}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">Email:</label>
+                                            <input type="email" class="form-control" name="email"  value="{{$user->email}}">
+                                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="city">Город:</label>
+                                            <input type="text" class="form-control" name="city"  value="{{$user->city}}">
+                                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="address">Адресс:</label>
+                                            <input type="text" class="form-control" name="address"  value="{{$user->address}}">
+                                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="post_office_number">Отделение:</label>
+                                            <input type="text" class="form-control" name="post_office_number"  value="{{$user->post_office_number}}">
+                                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="phone_number">Телефон:</label>
+                                            <input type="text" class="form-control" name="phone_number"  value="{{$user->phone_number ? '0'.$user->phone_number : ""}}">
+                                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
                 </div>
             </div>
         </div>

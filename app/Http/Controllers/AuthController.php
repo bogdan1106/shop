@@ -48,15 +48,14 @@ class AuthController extends Controller
             'active' => 1,
         ];
        if( auth()->attempt($credendials)) return redirect(route('index'));
-       else return 'error';
-
+       else return back()->with('success', 'Неверный логин или пароль');
       }
+
 
       public function logout()
       {
           if(auth()->user()) auth()->logout();
 
-//          return redirect(route('index'));
           return back();
       }
 
@@ -72,13 +71,6 @@ class AuthController extends Controller
               return redirect(route('index'));
           }
       }
-
-    public function profile()
-    {
-        $user = auth()->user();
-
-        return view('pages.profile', compact('user'));
-    }
 
 
     public function forgotPassword(Request $request)

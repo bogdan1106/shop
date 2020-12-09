@@ -20,7 +20,7 @@
 
             @if ($order == 'empty'|| $order->products->count() <1  )
                 <div class="ckeck-top heading">
-                    <h2> Basket is empty</h2>
+                    <h2> Ваша корзина пуста</h2>
                 </div>
             @else
             <div class="ckeck-top heading">
@@ -38,7 +38,7 @@
                         @foreach ($order->products as $product)
                         <ul class="cart-header">
                             <div class="close1"> </div>
-                            <li class="ring-in"><a href="single.html" ><img src="images/c-1.jpg" class="img-responsive" alt=""></a>
+                            <li class="ring-in"><a href="{{route('product', $product->id)}}" ><img src="{{$product->getImgPath()}}" class="img-responsive" width="170px" alt=""></a>
                             </li>
                             <li><span class="name">{{$product->name}}</span></li>
                             <li><span class="cost">$ {{$product->price}}</span></li>

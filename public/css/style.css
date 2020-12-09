@@ -3096,6 +3096,7 @@ ul.tag-men {
 }
 
 .text-content {
+
 	font-family: "Times New Roman", Times, serif;
 	font-size: 20px;
 	letter-spacing: 0px;
@@ -3106,6 +3107,7 @@ ul.tag-men {
 	font-style: normal;
 	font-variant: normal;
 	text-transform: none;
+	display: none;
 }
 
 
